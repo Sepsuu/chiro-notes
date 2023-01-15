@@ -1,1 +1,99 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+
+// Plus imports for other components in your app.
+
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+
 /* You can add global styles to this file, and also import other style files */
+$amaranth-purple-palette: (
+  50: #fae5e9,
+  100: #f4bfc9,
+  200: #ed97a7,
+  300: #e57186,
+  400: #dd5a6e,
+  500: #d64b59,
+  600: #c64656,
+  700: #b04052,
+  800: #9c3a4e,
+  900: #763245,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: white,
+    A700: white,
+  )
+);
+
+$opal-palette: (
+  50: #d7e8e9,
+  100: #9dc7c8,
+  200: #5aa4a4,
+  300: #008282,
+  400: #006b6a,
+  500: #005452,
+  600: #004a48,
+  700: #003d3a,
+  800: #002f2c,
+  900: #001a12,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: white,
+    A700: white,
+  )
+);
+
+
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$chiroNotesApp-primary: mat.define-palette($amaranth-purple-palette, 500, 300, 900);
+$chiroNotesApp-accent: mat.define-palette($opal-palette, 200, 100, 400);
+$chiroNotesApp-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$chiroNotesApp-theme: mat.define-light-theme((
+  color: (
+    primary: $chiroNotesApp-primary,
+    accent: $chiroNotesApp-accent,
+    warn: $chiroNotesApp-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($chiroNotesApp-theme);
+
+html, body { height: 100%; }
+
